@@ -1,0 +1,67 @@
+{
+    "Bronze Pipeline": {
+        "clusters": [
+            {
+                "label": "default",
+                "node_type_id": "c5.xlarge",
+                "driver_node_type_id": "c5.xlarge",
+                "autoscale": {
+                    "min_workers": 1,
+                    "max_workers": 5
+                }
+            }
+        ],
+        "development": true,
+        "continuous": false,
+        "channel": "CURRENT",
+        "edition": "PRO",
+        "photon": false,
+        "libraries": [
+            {
+                "notebook": {
+                    "path": "/Repos/tngochieu@tma.com.vn/ph2_deltalake_autoloader/02.Delta Live Bronze/01.frequent update"
+                }
+            }
+        ],
+        "name": "01.Bronze Tables Frequently Update",
+        "storage": "dbfs:/pipelines/ngochieutran/bronze_test_01",
+        "configuration": {
+            "pipelines.clusterShutdown.delay": "0s"
+        }
+    },
+    "Silver Pipeline": {
+        "clusters": [
+            {
+                "label": "default",
+                "node_type_id": "c5.xlarge",
+                "driver_node_type_id": "c5.xlarge",
+                "autoscale": {
+                    "min_workers": 1,
+                    "max_workers": 5
+                }
+            }
+        ],
+        "development": true,
+        "continuous": false,
+        "channel": "CURRENT",
+        "edition": "PRO",
+        "photon": false,
+        "libraries": [
+            {
+                "notebook": {
+                    "path": "/Repos/tngochieu@tma.com.vn/ph2_deltalake_autoloader/03.Delta Live Silver/01.student_campaigns"
+                }
+            },
+            {
+                "notebook": {
+                    "path": "/Repos/tngochieu@tma.com.vn/ph2_deltalake_autoloader/03.Delta Live Silver/01.student_campaigns"
+                }
+            }
+        ],
+        "name": "02.Silver Layer Updates",
+        "storage": "dbfs:/pipelines/ngochieutran/silver_test_01",
+        "configuration": {
+            "pipelines.clusterShutdown.delay": "0s"
+        }
+    }
+}
